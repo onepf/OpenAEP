@@ -62,18 +62,18 @@ Response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <application-description-file version="1">
-    <application platform="android" package="com.mxtech.videoplayer.ad">
-        <categorization>
-            <type>application</type>
-            <category>Video</category>
-            <subcategory></subcategory>
-        </categorization>
-        <description>
-            <texts>
-                <title>MX Player</title>
-                <keywords>video, player, movie, media, play</keywords>
-                <short-description>MX Player - The best way to enjoy your movies.</short-description>
-                <full-description>
+  <application platform="android" package="com.mxtech.videoplayer.ad">
+    <categorization>
+      <type>application</type>
+      <category>Video</category>
+      <subcategory></subcategory>
+    </categorization>
+    <description>
+      <texts>
+        <title>MX Player</title>
+        <keywords>video, player, movie, media, play</keywords>
+        <short-description>MX Player - The best way to enjoy your movies.</short-description>
+        <full-description>
 MX Player - The best way to enjoy your movies.
 a) HARDWARE DECODING - With new h/w decoder, more videos can take benefit from hardware acceleration.
 b) MULTI-CORE DECODING - MX Player is the first Android video player that performs multi-core decoding. According to the test results on dual-core devices, it shows up to 70% performance improvement than single-core devices.
@@ -81,92 +81,94 @@ c) PINCH TO ZOOM - Easily zoom in and out by pinching and swiping across screen.
 d) SUBTITLE SCROLL - Scroll on subtitle text and playback position will be adjusted to match previous or next subtitle timing.
 e) KIDS LOCK - Keep your kids entertained without having to worry about making calls or touching other apps. (plugin required)
 f) ANDROID 4.1 - Fully supports Android 4.1 Jelly Bean.
-                </full-description>
-            </texts>
-            <images>
-                <app-icon width="512" height="512">appicon.png</app-icon>
-                <large-promo width="1024" height="500">promo.png</large-promo>
-                <screenshots>
-                    <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
-                    <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
-                    <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
-                    <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
-                    <screenshot width="480" height="800" index="5">screenshot05_en.png</screenshot>
-                </screenshots>
-            </images>
-        </description>
-        <price free="yes">
-        </price>
-        <apk-files>
-            <apk-file>mxplayer.apk</apk-file>
-        </apk-files>
-        <customer-support>
-            <phone>+1 (555) 1234-56-78</phone>
-            <email>mxtechs.hq@gmail.com</email>
-            <website>https://sites.google.com/site/mxvpen/</website>
-        </customer-support>
-    </application>
-    <application platform="android" package="com.softspb.geo_game">
-        <categorization>
-            <type>game</type>
-            <category>Trivia</category>
-            <subcategory></subcategory>
-        </categorization>
-        <description>
-            <texts>
-                <title>SPB Geo Game</title>
-                <keywords>spb, game, geo, world, capital, flag, country, trivia</keywords>
-                <short-description>With SPB Geo Game you can study national capitals and flags.</short-description>
-                <full-description>
+        </full-description>
+      </texts>
+      <images>
+        <app-icon width="512" height="512">appicon.png</app-icon>
+        <large-promo width="1024" height="500">promo.png</large-promo>
+        <screenshots>
+            <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
+            <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
+            <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
+            <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
+            <screenshot width="480" height="800" index="5">screenshot05_en.png</screenshot>
+        </screenshots>
+      </images>
+    </description>
+    <price free="yes">
+    </price>
+    <apk-files>
+     <apk-file>mxplayer.apk</apk-file>
+    </apk-files>
+    <customer-support>
+      <phone>+1 (555) 1234-56-78</phone>
+      <email>mxtechs.hq@gmail.com</email>
+      <website>https://sites.google.com/site/mxvpen/</website>
+    </customer-support>
+  </application>
+  <application platform="android" package="com.softspb.geo_game">
+    <categorization>
+      <type>game</type>
+      <category>Trivia</category>
+      <subcategory></subcategory>
+    </categorization>
+    <description>
+      <texts>
+        <title>SPB Geo Game</title>
+        <keywords>spb, game, geo, world, capital, flag, country, trivia</keywords>
+        <short-description>With SPB Geo Game you can study national capitals and flags.</short-description>
+        <full-description>
 With SPB Geo Game you can study national capitals and flags.
 Features:
 * World Flags<
 * World Capitals
 * 3D Globe
 * Educational Animation
-                </full-description>
-            <images>
-                <app-icon width="512" height="512">appicon.png</app-icon>
-                <screenshots>
-                    <screenshot width="480" height="800" index="1">geogamead_ss1.png</screenshot>
-                    <screenshot width="480" height="800" index="2">geogamead_ss2.png</screenshot>
-                    <screenshot width="480" height="800" index="3">geogamead_ss3.png</screenshot>
-                    <screenshot width="480" height="800" index="4">geogamead_ss4.png</screenshot>
-                    <screenshot width="480" height="800" index="5">geogamead_ss5.png</screenshot>
-                    <screenshot width="480" height="800" index="6">geogamead_ss6.png</screenshot>
-                    <screenshot width="480" height="800" index="7">geogamead_ss7.png</screenshot>
-                    <screenshot width="480" height="800" index="8">geogamead_ss8.png</screenshot>
-                </screenshots>
-            </images>
-            <videos>
-                <youtube-video>WAyMMGOqXDE</youtube-video>
-            </videos>
-        </description>
-        <description-localization language="fr">
-            <texts>
-                <title>SPB Geo Game</title>
-                <keywords>spb, géo, le gibier, les pays, les capitales, drapeaux, trivia</keywords>
-                <short-description>Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.</short-description>
-                <full-description>
+        </full-description>
+        </texts>
+      <images>
+        <app-icon width="512" height="512">appicon.png</app-icon>
+        <screenshots>
+          <screenshot width="480" height="800" index="1">geogamead_ss1.png</screenshot>
+          <screenshot width="480" height="800" index="2">geogamead_ss2.png</screenshot>
+          <screenshot width="480" height="800" index="3">geogamead_ss3.png</screenshot>
+          <screenshot width="480" height="800" index="4">geogamead_ss4.png</screenshot>
+          <screenshot width="480" height="800" index="5">geogamead_ss5.png</screenshot>
+          <screenshot width="480" height="800" index="6">geogamead_ss6.png</screenshot>
+          <screenshot width="480" height="800" index="7">geogamead_ss7.png</screenshot>
+          <screenshot width="480" height="800" index="8">geogamead_ss8.png</screenshot>
+        </screenshots>
+      </images>
+      <videos>
+       <youtube-video>WAyMMGOqXDE</youtube-video>
+      </videos>
+    </description>
+    <description-localization language="fr">
+      <texts>
+        <title>SPB Geo Game</title>
+        <keywords>spb, géo, le gibier, les pays, les capitales, drapeaux, trivia</keywords>
+        <short-description>Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.</short-description>
+        <full-description>
 Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.
 * Drapeaux du monde
 * Capitales du monde
 * Globe 3d
 * Animation éducative
-                </full-description>
-        </description-localization>
-        <price free="no">
-            <base-price>0.99</base-price>
-        </price>
-        <apk-files>
-            <apk-file>SPBGeoGame.apk</apk-file>
-        </apk-files>
-        <customer-support>
-            <phone>+7 (812) 3356993</phone>
-            <email>support@spband.yandex.ru</email>
-            <website>http://www.yandex.ru</website>
-        </customer-support>
-    </application>
+        </full-description>
+      </texts>
+    </description-localization>
+    <price free="no">
+      <base-price>0.99</base-price>
+    </price>
+    <apk-files>
+      <apk-file>SPBGeoGame.apk</apk-file>
+    </apk-files>
+    <customer-support>
+      <phone>+7 (812) 3356993</phone>
+      <email>support@spband.yandex.ru</email>
+      <website>http://www.yandex.ru</website>
+    </customer-support>
+  </application>
 </application-description-file>
 ```
  
