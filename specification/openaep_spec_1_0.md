@@ -44,7 +44,7 @@ https://www.sourceappstore.com/openaep/applist
 ```
 
 Response:
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <application-list version="1" platform="android" last-updated="20130228T000000">
   <application package="com.softspb.flashcards.sv" version="1.3.1" build="81" last-updated="20130225T235959" last-review="20130227T110425">
@@ -59,7 +59,7 @@ https://www.sourceappstore.com/openaep/appdescription?package=com.mxtech.videopl
 ```
 
 Response:
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <application-description-file version="1">
     <application platform="android" package="com.mxtech.videoplayer.ad">
@@ -177,7 +177,7 @@ https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards
 ```
 
 Response:
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <review-list version="1" last-updated="20130228T000000">
   <application-reviews package="com.softspb.flashcards.sv" last-updated="20130225T235959-00">
@@ -235,7 +235,7 @@ https://www.distributorappstore.com/openaep/downloads
 ```
 
 Response:
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <downloads version="1">
   <download>
@@ -268,6 +268,9 @@ Request:
 ```
 https://www.distributorappstore.com/openaep/purchases
 ```
+
+Response:
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <purchases version="1">
   <purchase>
