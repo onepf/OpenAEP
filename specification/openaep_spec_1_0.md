@@ -1,15 +1,15 @@
 Summary
 -------------
 
-Open Application Exchange Protocol (OpenAEP) is designed to simplify deals when one appstore (source appstore) licenses its catalog of applications to another appstore (distributor appstore) for distribution. It is an HTTP REST based protocol with XML based result format. [AppDF](http://www.onepf.org/appdf) is used an an application description format.
+Open Application Exchange Protocol (OpenAEP) is designed to simplify deals when one appstore (source appstore) licenses its catalog of applications to another appstore (distributor appstore) for distribution. It is an RESTful protocol with XML based results. [AppDF](http://www.onepf.org/appdf) is used an an application description format.
 
-Functions 
+Methods 
 -------------
-OpenAEP consists of five HTTP(s) based functions:
+OpenAEP consists of five methods:
 
 <table>
   <tr>
-    <th>Function name</th>
+    <th>Method name</th>
     <th>Description</th>
   </tr>
   <tr>
