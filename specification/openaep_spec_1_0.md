@@ -47,8 +47,8 @@ Response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <application-list version="1" platform="android" last-updated="20130228T000000">
-  <application package="com.softspb.flashcards.sv" version="1.3.1" build="81" last-updated="20130225T235959" last-review="20130227T110425">
-  <application package="ru.yandex.shell" version="2.11" build="1765" last-updated="20130220T183142" last-review="20130110T202020">
+  <application package="com.softspb.flashcards.sv" version="1.3.1" build="81" last-updated="2013-02-25T23:59:59Z" last-review="2013-02-27T11:04:25Z">
+  <application package="ru.yandex.shell" version="2.11" build="1765" last-updated="2013-04-15T14:07:39Z" last-review="2013-01-10T20:20:20Z">
 </application-list>
 ```
  
@@ -181,12 +181,12 @@ https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards
 Response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<review-list version="1" last-updated="20130228T000000">
-  <application-reviews package="com.softspb.flashcards.sv" last-updated="20130225T235959-00">
+<review-list version="1" last-updated="2013-02-28T00:00:00Z">
+  <application-reviews package="com.softspb.flashcards.sv" last-updated="2013-02-25T23:59:59Z">
     <review>
       <version>1.3.1</version>
       <build>81</build>
-      <last-updated>20130227T110425</last-updated>
+      <last-updated>2013-02-27T11:04:25Z</last-updated>
       <stars>4</stars>
       <user-name>Bill White</user-name>
       <user-url>https://plus.google.com/108973876811926673453/posts</user-url>
@@ -200,18 +200,18 @@ Response:
     <review>
       <version>1.3.1</version>
       <build>81</build>
-      <last-updated>20130227T110425</last-updated>
+      <last-updated>2013-02-27T11:04:25Z</last-updated>
       <stars>5</stars>
       <device-model>SHW-M130K</device-model>
       <device-name>Samsung GT-i9082</device-name>
       <country>US</country>
     </review>
   </application-reviews>
-    <application-reviews package="com.softspb.geo_game" last-updated="20130222T233030-00">
+    <application-reviews package="com.softspb.geo_game" last-updated="2013-02-22T23:30:30Z">
     <review>
       <version>1.0</version>
       <build>50</build>
-      <last-updated>20130222T233030-00</last-updated>
+      <last-updated>2013-02-22T23:30:30Z</last-updated>
       <stars>5</stars>
       <device-model>SHW-M130K</device-model>
       <device-name>Samsung GT-i9082</device-name>
@@ -220,7 +220,7 @@ Response:
     <review>
       <version>1.0</version>
       <build>50</build>
-      <last-updated>20130222T233030-00</last-updated>
+      <last-updated>2013-02-22T23:30:30Z</last-updated>
       <stars>5</stars>
       <device-model>HTC One X</device-model>
       <device-name>HTC One X</device-name>
@@ -242,7 +242,7 @@ Response:
 <downloads version="1">
   <download>
     <package>com.softspb.geo_game</package>
-    <datetime>20130222T233030</datetime>
+    <datetime>2013-02-22T23:30:30Z</datetime>
     <version>1.0</version>
     <build>50</build>
     <last-updated>20130227T110425</last-updated>
@@ -253,7 +253,7 @@ Response:
   </download>
   <download>
     <package>com.softspb.flashcards.sv</package>
-    <datetime>20130222T233029</datetime>
+    <datetime>2013-02-22T23:30:29Z</datetime>
     <version>1.3.1</version>
     <build>81</build>
     <last-updated>20130227T110425</last-updated>
@@ -278,10 +278,10 @@ Response:
   <purchase>
     <id>90812378</id>
     <package>com.softspb.geo_game</package>
-    <datetime>20130222T233030</datetime>
+    <datetime>2013-02-22T23:30:30Z</datetime>
     <version>1.0</version>
     <build>50</build>
-    <last-updated>20130227T110425</last-updated>
+    <last-updated>2013-02-27T11:04:25Z</last-updated>
     <device-model>SHW-M130K</device-model>
     <device-name>Samsung GT-i9082</device-name>
     <country>US</country>
@@ -293,7 +293,7 @@ Response:
   <purchase>
     <id>90812379</id>
     <package>com.softspb.flashcards.sv</package>
-    <datetime>20130222T233029</datetime>
+    <datetime>2013-02-22T23:30:29Z</datetime>
     <version>1.3.1</version>
     <build>81</build>
     <last-updated>20130227T110425</last-updated>
