@@ -55,8 +55,20 @@ Response:
 ### App Description
 Request:
 ```
-https://www.sourceappstore.com/openaep/appdescription?package=com.mxtech.videoplayer.ad,com.softspb.geo_game
+https://www.sourceappstore.com/openaep/appdescription?package=com.mxtech.videoplayer.ad
 ```
+<table>
+  <tr>
+    <th>Param</th>
+    <th>Required</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>package</td>
+    <td>Y</td>
+    <td>Android package name</td>
+  </tr>
+</table>
 
 Response:
 ```xml
@@ -175,8 +187,20 @@ Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.
 ### App Reviews
 Request:
 ```
-https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards.sv,com.softspb.geo_game
+https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards.sv
 ```
+<table>
+  <tr>
+    <th>Param</th>
+    <th>Required</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>package</td>
+    <td>Y</td>
+    <td>Android package name</td>
+  </tr>
+</table>
 
 Response:
 ```xml
@@ -235,7 +259,6 @@ Request:
 ```
 https://www.distributorappstore.com/openaep/downloads?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
 ```
-
 <table>
   <tr>
     <th>Param</th>
@@ -306,8 +329,45 @@ Response:
 ### Purchases
 Request:
 ```
-https://www.distributorappstore.com/openaep/purchases
+https://www.distributorappstore.com/openaep/purchases?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
 ```
+<table>
+  <tr>
+    <th>Param</th>
+    <th>Required</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>package</td>
+    <td>Y</td>
+    <td>Android package name</td>
+  </tr>
+  <tr>
+    <td>datefrom</td>
+    <td>N</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases before this date</td>
+  </tr>
+  <tr>
+    <td>dateto</td>
+    <td>N</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases after this date</td>
+  </tr>
+  <tr>
+    <td>country</td>
+    <td>N</td>
+    <td>Country code from <a href="http://github.com/onepf/AppDF/blob/master/specification/data/countries.json">AppDF country list</a></td>
+  </tr>
+  <tr>
+    <td>limit</td>
+    <td>N</td>
+    <td>Initiates pagination. Specifies number of purchases in output. Used to fetch data by small parts. Adds <purchases offset="..."> attribute if some data remains in resultset</td>
+  </tr>
+  <tr>
+    <td>offset</td>
+    <td>N</td>
+    <td>Specifies page in resultset. Value is provided in <purchases offset="7j8ad9go"> attribute with <b>limit</b> param and points to the same output</td>
+  </tr>
+</table>
 
 Response:
 ```xml
