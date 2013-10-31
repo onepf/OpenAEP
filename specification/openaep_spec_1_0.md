@@ -187,7 +187,7 @@ Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.
 ### App Reviews
 Request:
 ```
-https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards.sv
+https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
 ```
 <table>
   <tr>
@@ -200,12 +200,37 @@ https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards
     <td>Y</td>
     <td>Android package name</td>
   </tr>
+  <tr>
+    <td>datefrom</td>
+    <td>N</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Limit output with reviews after this date</td>
+  </tr>
+  <tr>
+    <td>dateto</td>
+    <td>N</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Limit output with reviews before this date</td>
+  </tr>
+  <tr>
+    <td>country</td>
+    <td>N</td>
+    <td>Country code from <a href="http://github.com/onepf/AppDF/blob/master/specification/data/countries.json">AppDF country list</a></td>
+  </tr>
+  <tr>
+    <td>limit</td>
+    <td>N</td>
+    <td>Initiates pagination. Specifies number of reviews in output. Used to fetch data by small parts. Adds <downloads offset="..."> attribute if some data remains in resultset</td>
+  </tr>
+  <tr>
+    <td>offset</td>
+    <td>N</td>
+    <td>Specifies page in resultset. Value is provided in <review-list offset="7j8ad9go"> attribute with <b>limit</b> param and points to the same output</td>
+  </tr>
 </table>
 
 Response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<review-list version="1" last-updated="2013-02-28T00:00:00Z">
+<review-list version="1" last-updated="2013-02-28T00:00:00Z" offset="7j8ad9go">
   <application-reviews package="com.softspb.flashcards.sv" last-updated="2013-02-25T23:59:59Z">
     <review>
       <version>1.3.1</version>
@@ -273,12 +298,12 @@ https://www.distributorappstore.com/openaep/downloads?package=com.softspb.flashc
   <tr>
     <td>datefrom</td>
     <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads before this date</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads after this date</td>
   </tr>
   <tr>
     <td>dateto</td>
     <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads after this date</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads before this date</td>
   </tr>
   <tr>
     <td>country</td>
@@ -345,12 +370,12 @@ https://www.distributorappstore.com/openaep/purchases?package=com.softspb.flashc
   <tr>
     <td>datefrom</td>
     <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases before this date</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases after this date</td>
   </tr>
   <tr>
     <td>dateto</td>
     <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases after this date</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases before this date</td>
   </tr>
   <tr>
     <td>country</td>
