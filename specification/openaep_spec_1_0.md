@@ -13,23 +13,23 @@ OpenAEP consists of five methods:
     <th>Description</th>
   </tr>
   <tr>
-    <td>App list</td>
+    <td><a href="#app-list">App list</a></td>
     <td>List of all applications sorted by last update date with brief information about each (package, version, last update, etc)</td>
   </tr>
   <tr>
-    <td>App description</td>
+    <td><a href="#app-description">App description</a></td>
     <td>Detailed information about the given app(s) in AppDF format</td>
   </tr>
   <tr>
-    <td>App reviews</td>
+    <td><a href="#app-reviews">App reviews</a></td>
     <td>User review information about the given app(s)</td>
   </tr>
   <tr>
-    <td>Downloads</td>
+    <td><a href="#downloads">Downloads</a></td>
     <td>List of all app downloads with detailed information about each download provided by the distributor appstore</td>
   </tr>
   <tr>
-    <td>Purchases</td>
+    <td><a href="#purchases">Purchases</a></td>
     <td>List of all app purchases with detailed information about each purchase provided by the distributor appstore</td>
   </tr>
 </table>
@@ -120,7 +120,7 @@ f) ANDROID 4.1 - Fully supports Android 4.1 Jelly Bean.
         <full-description>
 With SPB Geo Game you can study national capitals and flags.
 Features:
-* World Flags<
+* World Flags
 * World Capitals
 * 3D Globe
 * Educational Animation
@@ -233,13 +233,51 @@ Response:
 ### Downloads
 Request:
 ```
-https://www.distributorappstore.com/openaep/downloads
+https://www.distributorappstore.com/openaep/downloads?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
 ```
+
+<table>
+  <tr>
+    <th>Param</th>
+    <th>Required</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>package</td>
+    <td>Y</td>
+    <td>Android package name.</td>
+  </tr>
+  <tr>
+    <td>datefrom</td>
+    <td>N</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads before this date</td>
+  </tr>
+  <tr>
+    <td>dateto</td>
+    <td>N</td>
+    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads after this date</td>
+  </tr>
+  <tr>
+    <td>country</td>
+    <td>N</td>
+    <td>Country code from <a href="http://github.com/onepf/AppDF/blob/master/specification/data/countries.json">AppDF country list</a></td>
+  </tr>
+  <tr>
+    <td>limit</td>
+    <td>N</td>
+    <td>Initiates pagination. Specifies number of downloads in output. Used to fetch data by small parts. Adds <downloads offset="..."> attribute if some data remains in resultset</td>
+  </tr>
+  <tr>
+    <td>offset</td>
+    <td>N</td>
+    <td>Specifies page in resultset. Value is provided in <downloads offset="7j8ad9go"> attribute with <b>limit</b> param and points to the same output</td>
+  </tr>
+</table>
 
 Response:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<downloads version="1">
+<downloads version="1" offset="6i7zc8fn">
   <download>
     <package>com.softspb.geo_game</package>
     <datetime>2013-02-22T23:30:30Z</datetime>
