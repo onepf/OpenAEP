@@ -1,11 +1,11 @@
 Summary
 -------------
 
-Open Application Exchange Protocol (OpenAEP) is designed to simplify deals when one appstore (source appstore) licenses its catalog of applications to another appstore (distributor appstore) for distribution. It is an RESTful protocol with XML based results. [AppDF](http://www.onepf.org/appdf) is used an an application description format.
+Open Application Exchange Protocol (OpenAEP) is designed to simplify deals when one appstore (source appstore) licenses its catalog of applications to another appstore (distributor appstore) for distribution via OnePF repository. It is an RESTful protocol with XML based results. [AppDF](http://www.onepf.org/appdf) is used an an application description format.
 
 Methods 
 -------------
-OpenAEP consists of five methods:
+OpenAEP consists of six methods:
 
 <table>
   <tr>
@@ -13,182 +13,96 @@ OpenAEP consists of five methods:
     <th>Description</th>
   </tr>
   <tr>
-    <td><a href="#app-list">App list</a></td>
+    <td><a href="#applist">applist</a></td>
     <td>List of all applications sorted by last update date with brief information about each (package, version, last update, etc)</td>
   </tr>
   <tr>
-    <td><a href="#app-description">App description</a></td>
-    <td>Detailed information about the given app(s) in AppDF format</td>
+    <td><a href="#appdf">appdf</a></td>
+    <td>Fetch the actual AppDF file that contains the App Descriptons and other files.</td>
   </tr>
   <tr>
-    <td><a href="#app-reviews">App reviews</a></td>
+    <td><a href="#reviews">reviews</a></td>
     <td>User review information about the given app(s)</td>
   </tr>
   <tr>
-    <td><a href="#downloads">Downloads</a></td>
+    <td><a href="#downloads">downloads</a></td>
     <td>List of all app downloads with detailed information about each download provided by the distributor appstore</td>
   </tr>
   <tr>
-    <td><a href="#purchases">Purchases</a></td>
+    <td><a href="#purchases">purchases</a></td>
     <td>List of all app purchases with detailed information about each purchase provided by the distributor appstore</td>
+  </tr>
+  <tr>
+    <td><a href="#sign">signReceipt</a></td>
+    <td>Sending by destributor store to source store (via repository) to sign InApp purchase.</td>
   </tr>
 </table>
 
-Sample
+Security 
+--------------
+To secure all comunication between source store, repository and distributor store following requirements must apply:
+
+- all communication is secured with SSL protocol.
+- Every store and repository should exchanges authorization Token. Token is a string with 32 alphnumeric characters used to authentificate store in repository and repository in store.
+- Also appstore should provide following information to be able work with repository:
+	- Unique appstore name (max 100 chars).
+	- Root URL to it's openaep protocol realization.
+	- Public key to validate <a href="#sign">Sign Receipt</a> requests.
+	
+Authentification
+--------------
+Every request are sended to repository should contain "authToken" in it's HTTP headers or as a request parameter. It must be a token provided by repository to appstore. Every request from repository to appstore will contain token that provided by appstore .
+
+
+Fetch data
+-------------
+All result must be sorted in newest first and oldest last. This enables user to fetch the last data from a another server without have to crawl the full dataset.
+
+<b>offset</b> The method "App list", "App reviews", "Downloads" and "Purchases" use attribute "offset" (in first element) that is a fully qualified
+url to next page of this dataset. Absebse of this attribute means that this piece of data is last. 
+This is recommended to split data in pices of 1000 item each except for "App list" that the is recommended to split in price of 5000 apps.
+
+Requests
 -------------
 
-### App List
-Request:
+All requests (exept <a href="#sign">Sign Receipt</a>) are GET requests in following format:
+
 ```
-https://www.sourceappstore.com/openaep/applist
+GET https://<ROOT_OPENAEP_URL>/openaep/<METHOD_NAME>?<PARAMETERS>&authToken=<AUTH_TOKEN>
 ```
 
-Response:
+ROOT_OPENAEP_URL - root url to openaep protocol realization, provided by appstore or repository.
+METHOD_NAME - Name of the method.
+PARAMETERS - Parameters for corresponding method.
+AUTH_TOKEN - Authorization token. Can be provided as request parameter or HTTP header
+
+
+## applist
+#####Request
+No parameters
+
+```
+https://www.sourcestore.com/openaep/applist?authToken=dee0ed6174a894113d5e8f6c98f0e92b
+```
+
+#####Response
+Response contains list of xml objects with attributes:
+	**package** - name of the package contains in appdf file.
+	**hash** - MD5 calculated hash of the appdf file
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<application-list version="1" platform="android" last-updated="20130228T000000">
-  <application package="com.softspb.flashcards.sv" version="1.3.1" build="81" last-updated="2013-02-25T23:59:59Z" last-review="2013-02-27T11:04:25Z">
-  <application package="ru.yandex.shell" version="2.11" build="1765" last-updated="2013-04-15T14:07:39Z" last-review="2013-01-10T20:20:20Z">
+<application-list version="1" offset=https://www.sourcestore.com/openaep/applist_9.xml>
+  <application package="com.softspb.flashcards.sv" hash="2AD12A417FB624F4AED9CE0B7D732FD7">
+  <application package="ru.yandex.shell" hash="0F229B2805710DD6F4F6779046C889BB">
+  <application package="org.onepf.trivialdrive" hash="D10D4E038F0FD379EF074511081F85E6">
 </application-list>
 ```
  
-### App Description
-Request:
-```
-https://www.sourceappstore.com/openaep/appdescription?package=com.mxtech.videoplayer.ad
-```
-<table>
-  <tr>
-    <th>Param</th>
-    <th>Required</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>package</td>
-    <td>Y</td>
-    <td>Android package name</td>
-  </tr>
-</table>
-
-Response:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<application-description-file version="1">
-  <application platform="android" package="com.mxtech.videoplayer.ad">
-    <categorization>
-      <type>application</type>
-      <category>Video</category>
-      <subcategory></subcategory>
-    </categorization>
-    <description>
-      <texts>
-        <title>MX Player</title>
-        <keywords>video, player, movie, media, play</keywords>
-        <short-description>MX Player - The best way to enjoy your movies.</short-description>
-        <full-description>
-MX Player - The best way to enjoy your movies.
-a) HARDWARE DECODING - With new h/w decoder, more videos can take benefit from hardware acceleration.
-b) MULTI-CORE DECODING - MX Player is the first Android video player that performs multi-core decoding. According to the test results on dual-core devices, it shows up to 70% performance improvement than single-core devices.
-c) PINCH TO ZOOM - Easily zoom in and out by pinching and swiping across screen.
-d) SUBTITLE SCROLL - Scroll on subtitle text and playback position will be adjusted to match previous or next subtitle timing.
-e) KIDS LOCK - Keep your kids entertained without having to worry about making calls or touching other apps. (plugin required)
-f) ANDROID 4.1 - Fully supports Android 4.1 Jelly Bean.
-        </full-description>
-      </texts>
-      <images>
-        <app-icon width="512" height="512">appicon.png</app-icon>
-        <large-promo width="1024" height="500">promo.png</large-promo>
-        <screenshots>
-            <screenshot width="480" height="800" index="1">screenshot01_en.png</screenshot>
-            <screenshot width="480" height="800" index="2">screenshot02_en.png</screenshot>
-            <screenshot width="480" height="800" index="3">screenshot03_en.png</screenshot>
-            <screenshot width="480" height="800" index="4">screenshot04_en.png</screenshot>
-            <screenshot width="480" height="800" index="5">screenshot05_en.png</screenshot>
-        </screenshots>
-      </images>
-    </description>
-    <price free="yes">
-    </price>
-    <apk-files>
-     <apk-file>mxplayer.apk</apk-file>
-    </apk-files>
-    <customer-support>
-      <phone>+1 (555) 1234-56-78</phone>
-      <email>mxtechs.hq@gmail.com</email>
-      <website>https://sites.google.com/site/mxvpen/</website>
-    </customer-support>
-  </application>
-  <application platform="android" package="com.softspb.geo_game">
-    <categorization>
-      <type>game</type>
-      <category>Trivia</category>
-      <subcategory></subcategory>
-    </categorization>
-    <description>
-      <texts>
-        <title>SPB Geo Game</title>
-        <keywords>spb, game, geo, world, capital, flag, country, trivia</keywords>
-        <short-description>With SPB Geo Game you can study national capitals and flags.</short-description>
-        <full-description>
-With SPB Geo Game you can study national capitals and flags.
-Features:
-* World Flags
-* World Capitals
-* 3D Globe
-* Educational Animation
-        </full-description>
-        </texts>
-      <images>
-        <app-icon width="512" height="512">appicon.png</app-icon>
-        <screenshots>
-          <screenshot width="480" height="800" index="1">geogamead_ss1.png</screenshot>
-          <screenshot width="480" height="800" index="2">geogamead_ss2.png</screenshot>
-          <screenshot width="480" height="800" index="3">geogamead_ss3.png</screenshot>
-          <screenshot width="480" height="800" index="4">geogamead_ss4.png</screenshot>
-          <screenshot width="480" height="800" index="5">geogamead_ss5.png</screenshot>
-          <screenshot width="480" height="800" index="6">geogamead_ss6.png</screenshot>
-          <screenshot width="480" height="800" index="7">geogamead_ss7.png</screenshot>
-          <screenshot width="480" height="800" index="8">geogamead_ss8.png</screenshot>
-        </screenshots>
-      </images>
-      <videos>
-       <youtube-video>WAyMMGOqXDE</youtube-video>
-      </videos>
-    </description>
-    <description-localization language="fr">
-      <texts>
-        <title>SPB Geo Game</title>
-        <keywords>spb, géo, le gibier, les pays, les capitales, drapeaux, trivia</keywords>
-        <short-description>Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.</short-description>
-        <full-description>
-Avec le jeu SPB Geo vous pouvez étudier les capitales et les drapeaux.
-* Drapeaux du monde
-* Capitales du monde
-* Globe 3d
-* Animation éducative
-        </full-description>
-      </texts>
-    </description-localization>
-    <price free="no">
-      <base-price>0.99</base-price>
-    </price>
-    <apk-files>
-      <apk-file>SPBGeoGame.apk</apk-file>
-    </apk-files>
-    <customer-support>
-      <phone>+7 (812) 3356993</phone>
-      <email>support@spband.yandex.ru</email>
-      <website>http://www.yandex.ru</website>
-    </customer-support>
-  </application>
-</application-description-file>
-```
  
-### App Reviews
-Request:
-```
-https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
-```
+## appdf
+Get the AppDF file that is described at [AppDF](http://www.onepf.org/appdf).
+#####Request
 <table>
   <tr>
     <th>Param</th>
@@ -200,138 +114,99 @@ https://www.sourceappstore.com/openaep/appreviews?package=com.softspb.flashcards
     <td>Y</td>
     <td>Android package name</td>
   </tr>
-  <tr>
-    <td>datefrom</td>
-    <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Limit output with reviews after this date</td>
-  </tr>
-  <tr>
-    <td>dateto</td>
-    <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Limit output with reviews before this date</td>
-  </tr>
-  <tr>
-    <td>country</td>
-    <td>N</td>
-    <td>Country code from <a href="http://github.com/onepf/AppDF/blob/master/specification/data/countries.json">AppDF country list</a></td>
-  </tr>
-  <tr>
-    <td>limit</td>
-    <td>N</td>
-    <td>Initiates pagination. Specifies number of reviews in output. Used to fetch data by small parts. Adds <downloads offset="..."> attribute if some data remains in resultset</td>
-  </tr>
-  <tr>
-    <td>offset</td>
-    <td>N</td>
-    <td>Specifies page in resultset. Value is provided in <review-list offset="7j8ad9go"> attribute with <b>limit</b> param and points to the same output</td>
-  </tr>
 </table>
+```
+https://www.sourceappstore.com/openaep/appdf?package=com.mxtech.videoplayer.ad
+```
+// Absense authToken in request parameters means it is in HTTP header
 
-Response:
+#####Response
+An AppDF file that contains all need APK and images files.
+ 
+## reviews
+#####Request
+No parameters
+
+```
+https://www.sourceappstore.com/openaep/reviews?authToken=dee0ed6174a894113d5e8f6c98f0e92b
+```
+#####Response
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<review-list version="1" last-updated="2013-02-28T00:00:00Z" offset="7j8ad9go">
-  <application-reviews package="com.softspb.flashcards.sv" last-updated="2013-02-25T23:59:59Z">
+<reviews version="1" offset="https://www.sourceappstore.com/openaep/7j8ad9go.xml">
     <review>
+      <package>ru.yandex.shell</package>
+      <appstoreId>com.sourceappstore</appstoreId>
       <version>1.3.1</version>
-      <build>81</build>
-      <last-updated>2013-02-27T11:04:25Z</last-updated>
-      <stars>4</stars>
-      <user-name>Bill White</user-name>
-      <user-url>https://plus.google.com/108973876811926673453/posts</user-url>
+      <versionCode>81</versionCode>
+      <rating>0.6</rating>
+      <datetime>2013-02-22 23:30:30</datetime>
       <device-model>SHW-M130K</device-model>
       <device-name>Samsung GT-i9082</device-name>
       <country>US</country>
+      <user-name>Bill White</user-name>
       <title>Greate to learn language</title>
       <text>Just perfect as it was since Win Mobile times</text>
-      <useful>-2</useful>
+      <review-url>https://www.sourceappstore.com/reviews/108973876811345873453</review-url>
     </review>
-    <review>
-      <version>1.3.1</version>
-      <build>81</build>
-      <last-updated>2013-02-27T11:04:25Z</last-updated>
-      <stars>5</stars>
-      <device-model>SHW-M130K</device-model>
-      <device-name>Samsung GT-i9082</device-name>
-      <country>US</country>
-    </review>
-  </application-reviews>
-    <application-reviews package="com.softspb.geo_game" last-updated="2013-02-22T23:30:30Z">
-    <review>
+	<review>
+	  <package>org.onepf.trivialdrive</package>
+      <appstoreId>com.sourceappstore</appstoreId>
       <version>1.0</version>
-      <build>50</build>
-      <last-updated>2013-02-22T23:30:30Z</last-updated>
-      <stars>5</stars>
+      <build>50</build>    
+      <rating>1.0</rating>
+      <datetime>2013-02-22 23:30:10</datetime>
       <device-model>SHW-M130K</device-model>
       <device-name>Samsung GT-i9082</device-name>
       <country>US</country>
     </review>
     <review>
+	  <package>org.onepf.trivialdrive</package>
+      <appstoreId>com.sourceappstore</appstoreId>
       <version>1.0</version>
-      <build>50</build>
-      <last-updated>2013-02-22T23:30:30Z</last-updated>
-      <stars>5</stars>
+      <build>50</build>    
+      <rating>0.8</rating>
+      <datetime>2013-02-22 23:29:10</datetime>
       <device-model>HTC One X</device-model>
       <device-name>HTC One X</device-name>
-      <country>DE</country>
+      <country>US</country>
+      <user-name>Dorian Gray</user-name>
+      <title>Great Game</title>
+      <text>Great game, but too short. 4 stars because of that.</text>
+      <review-url>https://www.sourceappstore.com/reviews/108973873741345873453</review-url>
     </review>
-  </application-reviews>
-</review-list>
+    <review>
+	  <package>com.softspb.flashcards.sv</package>
+      <appstoreId>com.sourceappstore</appstoreId>
+      <version>2.0.0.1</version>
+      <build>117</build>    
+      <rating>0.4</rating>
+      <datetime>2013-02-22 23:20:10</datetime>
+      <device-model>SHW-M130K</device-model>
+      <device-name>Samsung GT-i9082</device-name>
+      <country>US</country>
+    </review>
+</reviews>
 ```
 
-### Downloads
-Request:
-```
-https://www.distributorappstore.com/openaep/downloads?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
-```
-<table>
-  <tr>
-    <th>Param</th>
-    <th>Required</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>package</td>
-    <td>Y</td>
-    <td>Android package name.</td>
-  </tr>
-  <tr>
-    <td>datefrom</td>
-    <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads after this date</td>
-  </tr>
-  <tr>
-    <td>dateto</td>
-    <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Limit output with downloads before this date</td>
-  </tr>
-  <tr>
-    <td>country</td>
-    <td>N</td>
-    <td>Country code from <a href="http://github.com/onepf/AppDF/blob/master/specification/data/countries.json">AppDF country list</a></td>
-  </tr>
-  <tr>
-    <td>limit</td>
-    <td>N</td>
-    <td>Initiates pagination. Specifies number of downloads in output. Used to fetch data by small parts. Adds <downloads offset="..."> attribute if some data remains in resultset</td>
-  </tr>
-  <tr>
-    <td>offset</td>
-    <td>N</td>
-    <td>Specifies page in resultset. Value is provided in <downloads offset="7j8ad9go"> attribute with <b>limit</b> param and points to the same output</td>
-  </tr>
-</table>
+## downloads
+#####Request
+No parameters
 
-Response:
+```
+https://www.sourceappstore.com/openaep/downloads
+```
+// Absense authToken in request parameters means it is in HTTP header
+#####Response
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<downloads version="1" offset="6i7zc8fn">
+<downloads version="1" offset="https://www.distributorappstore.com/openaep/6i7zc8fn.xml">
   <download>
     <package>com.softspb.geo_game</package>
-    <datetime>2013-02-22T23:30:30Z</datetime>
+    <appstoreId>com.sourceappstore</appstoreId>
+    <datetime>2013-02-22 23:30:30</datetime>
     <version>1.0</version>
-    <build>50</build>
-    <last-updated>20130227T110425</last-updated>
+    <versionCode>50</versionCode>
     <device-model>SHW-M130K</device-model>
     <device-name>Samsung GT-i9082</device-name>
     <country>US</country>
@@ -339,10 +214,10 @@ Response:
   </download>
   <download>
     <package>com.softspb.flashcards.sv</package>
-    <datetime>2013-02-22T23:30:29Z</datetime>
+    <appstoreId>com.sourceappstore</appstoreId>
+    <datetime>2013-02-22 23:30:29</datetime>
     <version>1.3.1</version>
-    <build>81</build>
-    <last-updated>20130227T110425</last-updated>
+    <versionCode>81</versionCode>
     <device-model>HTC One X</device-model>
     <device-name>HTC One X</device-name>
     <country>DE</country>
@@ -351,60 +226,25 @@ Response:
 </downloads>
 ```
 
-### Purchases
-Request:
-```
-https://www.distributorappstore.com/openaep/purchases?package=com.softspb.flashcards.sv&datefrom=2013-05-10&dateto=2013-07-17&country=US&limit=100&offset=7j8ad9go
-```
-<table>
-  <tr>
-    <th>Param</th>
-    <th>Required</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>package</td>
-    <td>Y</td>
-    <td>Android package name</td>
-  </tr>
-  <tr>
-    <td>datefrom</td>
-    <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases after this date</td>
-  </tr>
-  <tr>
-    <td>dateto</td>
-    <td>N</td>
-    <td>Date with format YYYY-MM-DD UTC+0. Output contains only purchases before this date</td>
-  </tr>
-  <tr>
-    <td>country</td>
-    <td>N</td>
-    <td>Country code from <a href="http://github.com/onepf/AppDF/blob/master/specification/data/countries.json">AppDF country list</a></td>
-  </tr>
-  <tr>
-    <td>limit</td>
-    <td>N</td>
-    <td>Initiates pagination. Specifies number of purchases in output. Used to fetch data by small parts. Adds <purchases offset="..."> attribute if some data remains in resultset</td>
-  </tr>
-  <tr>
-    <td>offset</td>
-    <td>N</td>
-    <td>Specifies page in resultset. Value is provided in <purchases offset="7j8ad9go"> attribute with <b>limit</b> param and points to the same output</td>
-  </tr>
-</table>
+## purchases
+#####Request
+No parameters
 
-Response:
+```
+https://www.sourceappstore.com/openaep/purchases
+```
+// Absense authToken in request parameters means it is in HTTP header
+#####Response
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <purchases version="1">
   <purchase>
     <id>90812378</id>
     <package>com.softspb.geo_game</package>
-    <datetime>2013-02-22T23:30:30Z</datetime>
+    <appstoreId>com.sourceappstore</appstoreId>
+    <datetime>2013-02-22 23:30:30</datetime>
     <version>1.0</version>
-    <build>50</build>
-    <last-updated>2013-02-27T11:04:25Z</last-updated>
+    <versionCode>50</versionCode>
     <device-model>SHW-M130K</device-model>
     <device-name>Samsung GT-i9082</device-name>
     <country>US</country>
@@ -412,14 +252,15 @@ Response:
     <user-currency>USD</user-currency>
     <inner-price>0.99</inner-price>
     <inner-currency>USD</inner-currency>
+    <signature>dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI=</signature>
   </purchase>
   <purchase>
     <id>90812379</id>
     <package>com.softspb.flashcards.sv</package>
-    <datetime>2013-02-22T23:30:29Z</datetime>
+    <appstoreId>com.sourceappstore</appstoreId>
+    <datetime>2013-02-22 23:30:29 </datetime>
     <version>1.3.1</version>
-    <build>81</build>
-    <last-updated>20130227T110425</last-updated>
+    <versionCode>81</versionCode>
     <device-model>HTC One X</device-model>
     <device-name>HTC One X</device-name>
     <country>DE</country>
@@ -427,6 +268,7 @@ Response:
     <user-currency>EUR</user-currency>
     <inner-price>2.50</inner-price>
     <inner-currency>USD</inner-currency>
+    <signature>+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE=</signature>
   </purchase>
 </purchases>
 ```
@@ -434,8 +276,8 @@ Response:
 Status
 -------------
 Current status: draft  
-Specification version: 0.70
-Last update: April 11, 2013  
+Specification version: 0.82
+Last update: April 08, 2014  
 
 License
 -------------
