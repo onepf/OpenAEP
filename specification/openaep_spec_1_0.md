@@ -71,10 +71,10 @@ All requests (exept <a href="#sign">Sign Receipt</a>) are GET requests in follow
 GET https://<ROOT_OPENAEP_URL>/openaep/<METHOD_NAME>?<PARAMETERS>&authToken=<AUTH_TOKEN>
 ```
 
-ROOT_OPENAEP_URL - root url to openaep protocol realization, provided by appstore or repository.
-METHOD_NAME - Name of the method.
-PARAMETERS - Parameters for corresponding method.
-AUTH_TOKEN - Authorization token. Can be provided as request parameter or HTTP header
+- ROOT_OPENAEP_URL - root url to openaep protocol realization, provided by appstore or repository.
+- METHOD_NAME - Name of the method.
+- PARAMETERS - Parameters for corresponding method.
+- AUTH_TOKEN - Authorization token. Can be provided as request parameter or HTTP header
 
 
 ## applist
@@ -87,8 +87,9 @@ https://www.sourcestore.com/openaep/applist?authToken=dee0ed6174a894113d5e8f6c98
 
 #####Response
 Response contains list of xml objects with attributes:
-	**package** - name of the package contains in appdf file.
-	**hash** - MD5 calculated hash of the appdf file
+
+- **package** - name of the package contains in appdf file.
+- **hash** - MD5 calculated hash of the appdf file
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -275,7 +276,7 @@ https://www.sourceappstore.com/openaep/purchases
 
 Status
 -------------
-Current status: draft   
+Current status: draft
 Specification version: 0.82
 Last update: April 08, 2014  
 
