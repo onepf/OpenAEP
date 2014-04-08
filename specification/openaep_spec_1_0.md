@@ -275,7 +275,7 @@ https://www.sourceappstore.com/openaep/purchases
 
 Status
 -------------
-Current status: draft  
+Current status: draft   
 Specification version: 0.82
 Last update: April 08, 2014  
 
