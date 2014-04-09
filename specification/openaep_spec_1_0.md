@@ -295,7 +295,7 @@ requestBody:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<receipt version="1" receipt-data="	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" distributor-appstore="com.distributorstore" distributor-signature="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
+<receipt version="1" receipt-data="{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" distributor-appstore="com.distributorstore" distributor-signature="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
 ```
 
 #####Response
@@ -306,7 +306,7 @@ requestBody:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<receipt version="1" receipt-data="	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" developer-appstore="com.sourcestore" developer-signature="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>
+<receipt version="1" receipt-data="{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" developer-appstore="com.sourcestore" developer-signature="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>
 ```
 
 Status
