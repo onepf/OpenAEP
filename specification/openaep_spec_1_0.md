@@ -281,7 +281,8 @@ This request is used by distributor store to sign inApp purchase in source store
 #####Request
 POST request with XML **receipt** object. It contains two parameters:
 
- - **body** - Purchase receipt. String in JSON format with following fields: appstoreId, orderId, packageName, productId, purchaseTime, purchaseToken, developerPayload.
+ - **body** - Purchase receipt. String in JSON format with following fields: appstoreId, orderId, packageName, productId, purchaseTime, purchaseToken, developerPayload. 
+ <i>Should not contain spaces, newlines, etc. to avoid errors in signature calculation.</i>
  - **signatures** - the list of **signature** objects.
 
 **signature** object contains teo parametes:
@@ -300,16 +301,7 @@ requestBody:
 <?xml version="1.0" encoding="UTF-8"?>
 <receipt version="1">
   <body>
-  	{
-  		"appstoreId":"12999763169054705758.1371079406387615",
-  		"orderId":"com.example.app",
-  		"appstoreId":"com.destributorstore",
-  		"packageName":"com.example.app",
-  		"productId":"exampleSku",
-  		"purchaseTime":1345678900000,
-  		"purchaseToken":"122333444455555",
-  		"developerPayload":"example developer payload" 
-  	}
+	{"appstoreId":"12999763169054705758.1371079406387615","orderId":"com.example.app","appstoreId":"com.destributorstore","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload" }
   </body>
   <signatures>
     <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
@@ -324,16 +316,7 @@ Similair to request body, but with additional signatures
 <?xml version="1.0" encoding="UTF-8"?>
 <receipt version="1">
   <body>
-  	{
-  		"appstoreId":"12999763169054705758.1371079406387615",
-  		"orderId":"com.example.app",
-  		"appstoreId":"com.destributorstore",
-  		"packageName":"com.example.app",
-  		"productId":"exampleSku",
-  		"purchaseTime":1345678900000,
-  		"purchaseToken":"122333444455555",
-  		"developerPayload":"example developer payload" 
-  	}
+	{"appstoreId":"12999763169054705758.1371079406387615","orderId":"com.example.app","appstoreId":"com.destributorstore","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload" }
   </body>
   <signatures>
     <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>    
