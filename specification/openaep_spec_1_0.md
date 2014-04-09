@@ -301,7 +301,7 @@ requestBody:
 <?xml version="1.0" encoding="UTF-8"?>
 <receipt version="1">
   <body>
-	{"appstoreId":"12999763169054705758.1371079406387615","orderId":"com.example.app","appstoreId":"com.destributorstore","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload" }
+	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload" }
   </body>
   <signatures>
     <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
@@ -316,7 +316,7 @@ Similair to request body, but with additional signatures
 <?xml version="1.0" encoding="UTF-8"?>
 <receipt version="1">
   <body>
-	{"appstoreId":"12999763169054705758.1371079406387615","orderId":"com.example.app","appstoreId":"com.destributorstore","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload" }
+	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload" }
   </body>
   <signatures>
     <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>    
