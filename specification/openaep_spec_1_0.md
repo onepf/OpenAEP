@@ -301,9 +301,8 @@ requestBody:
 <receipt version="1">
   <body>
   	{
-  		"appstoreId":"12999763169054705758.1371079406387615",
-  		"orderId":"com.example.app",
   		"appstoreId":"com.destributorstore",
+  		"orderId":"com.example.app",
   		"packageName":"com.example.app",
   		"productId":"exampleSku",
   		"purchaseTime":1345678900000,
@@ -325,9 +324,8 @@ Similair to request body, but with additional signatures
 <receipt version="1">
   <body>
   	{
-  		"appstoreId":"12999763169054705758.1371079406387615",
-  		"orderId":"com.example.app",
   		"appstoreId":"com.destributorstore",
+  		"orderId":"com.example.app",
   		"packageName":"com.example.app",
   		"productId":"exampleSku",
   		"purchaseTime":1345678900000,
