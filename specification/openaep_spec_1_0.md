@@ -276,19 +276,15 @@ https://www.sourceappstore.com/openaep/purchases
 
 ## signReceipt
 
-This request is used by distributor store to sign inApp purchase in source store. Distributor store sign its request with it's private key and send to repository. Repository validates signature and provide this request to source store. Repository signs request with it's private key, to let the source store know that request come from known appstore. Source appstore sign receipt with application specific key and send it back to repository. Repository sign response with it's private key and send it back to destributor store.
+This request is used by distributor store to sign inApp purchase in source store. Distributor store sign its request with it's private key and send to repository. Repository validates signature and provide this request to source store. Source appstore sign receipt with application specific key and send it back to repository provides it to distributor store.
 
 #####Request
-POST request with XML **receipt** object. It contains two parameters:
+POST request with XML **receipt** object. It contains three attributes:
 
- - **body** - Purchase receipt. String in JSON format with following fields: appstoreId, orderId, packageName, productId, purchaseTime, purchaseToken, developerPayload. 
+ - **receipt-data** - Purchase receipt. String in JSON format with following fields: appstoreId, orderId, packageName, productId, purchaseTime, purchaseToken, developerPayload. 
  <i>Should not contain spaces, newlines, etc. to avoid errors in signature calculation.</i>
- - **signatures** - the list of **signature** objects.
-
-**signature** object contains teo parametes:
-
-- **attendee** - the entity (sourcestore, repository, destributorstore) signed receipt.
-- **sign** - the sign string.
+ - **distributor-appstore** - unique appstoreId of destributor store.
+ - **distributor-signature** - the receipt-data signed with distributors private key
  
 request:
 
@@ -299,32 +295,18 @@ requestBody:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<receipt version="1">
-  <body>
-	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}
-  </body>
-  <signatures>
-    <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
-  </signatures>
-</receipt>
+<receipt version="1" receipt-data="	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" distributor-appstore="com.distributorstore" distributor-signature="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
 ```
 
 #####Response
-Similair to request body, but with additional signatures
+ - **receipt-data** - Purchase receipt. String in JSON format with following fields: appstoreId, orderId, packageName, productId, purchaseTime, purchaseToken, developerPayload. 
+ <i>Should not contain spaces, newlines, etc. to avoid errors in signature calculation.</i>
+ - **developer-appstore** - unique appstoreId of source store.
+ - **developer-signature** - the receipt-data signed by source store with application specific key.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<receipt version="1">
-  <body>
-	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}
-  </body>
-  <signatures>
-    <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>    
-    <signature attendee="com.sourcestore" sign="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>    
-    <signature attendee="onepf.repository" sign="a39+YozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ=
-"/>    
-    </signatures>
-</receipt>
+<receipt version="1" receipt-data="	{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" developer-appstore="com.sourcestore" developer-signature="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>
 ```
 
 Status
