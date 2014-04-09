@@ -274,6 +274,76 @@ https://www.sourceappstore.com/openaep/purchases
 </purchases>
 ```
 
+## signReceipt
+
+This request is used by distributor store to sign inApp purchase in source store. Distributor store sign its request with it's private key and send to repository. Repository validates signature and provide this request to source store. Repository signs request with it's private key, to let the source store know that request come from known appstore. Source appstore sign receipt with application specific key and send it back to repository. Repository sign response with it's private key and send it back to destributor store.
+
+#####Request
+POST request with XML **receipt** object. It contains two parameters:
+
+ - **body** - Purchase receipt. String in JSON format with following fields: appstoreId, orderId, packageName, productId, purchaseTime, purchaseToken, developerPayload.
+ - **signatures** - the list of **signature** objects.
+
+**signature** object contains teo parametes:
+
+- **attendee** - the entity (sourcestore, repository, destributorstore) signed receipt.
+- **sign** - the sign string.
+ 
+request:
+
+```
+POST https://www.sourceappstore.com/openaep/signPurchase
+```
+requestBody:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<receipt version="1">
+  <body>
+  	{
+  		"appstoreId":"12999763169054705758.1371079406387615",
+  		"orderId":"com.example.app",
+  		"appstoreId":"com.destributorstore",
+  		"packageName":"com.example.app",
+  		"productId":"exampleSku",
+  		"purchaseTime":1345678900000,
+  		"purchaseToken":"122333444455555",
+  		"developerPayload":"example developer payload" 
+  	}
+  </body>
+  <signatures>
+    <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
+  </signatures>
+</receipt>
+```
+
+#####Response
+Similair to request body, but with additional signatures
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<receipt version="1">
+  <body>
+  	{
+  		"appstoreId":"12999763169054705758.1371079406387615",
+  		"orderId":"com.example.app",
+  		"appstoreId":"com.destributorstore",
+  		"packageName":"com.example.app",
+  		"productId":"exampleSku",
+  		"purchaseTime":1345678900000,
+  		"purchaseToken":"122333444455555",
+  		"developerPayload":"example developer payload" 
+  	}
+  </body>
+  <signatures>
+    <signature attendee="com.destributorstore" sign="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>    
+    <signature attendee="com.sourcestore" sign="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>    
+    <signature attendee="onepf.repository" sign="a39+YozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ=
+"/>    
+    </signatures>
+</receipt>
+```
+
 Status
 -------------
 Current status: draft
