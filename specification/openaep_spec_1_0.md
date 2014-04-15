@@ -147,7 +147,7 @@ https://www.sourceappstore.com/openaep/reviews?authToken=dee0ed6174a894113d5e8f6
       	country="US"
       	user-name="Bill White"
       	title="Greate to learn language"
-      	text="Just perfect as it was since Win Mobile times"</text>"
+      	text="Just perfect as it was since Win Mobile times"
       	review-url="https://www.sourceappstore.com/reviews/108973876811345873453"/>
     <review
     	package="org.onepf.trivialdrive"
@@ -171,7 +171,7 @@ https://www.sourceappstore.com/openaep/reviews?authToken=dee0ed6174a894113d5e8f6
       	country="US"
       	user-name="Dorian Gray"
       	title="Great Game"
-      	text="Great game, but too short. 4 stars because of that."</text>"
+      	text="Great game, but too short. 4 stars because of that."
       	review-url="https://www.sourceappstore.com/reviews/108973873741345873453"/>
     <review
     	package="com.softspb.flashcards.sv"
@@ -287,7 +287,10 @@ requestBody:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<receipt version="1" receipt-data='{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}' distributor-appstore='com.distributorstore' distributor-signature='+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE='/>
+<receipt version="1" 
+	receipt-data='{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}' 
+	distributor-appstore='com.distributorstore' 
+	distributor-signature='+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE='/>
 ```
 
 #####Response
@@ -298,7 +301,10 @@ requestBody:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<receipt version="1" receipt-data='{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}' developer-appstore='com.sourcestore' developer-signature='dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI='/>
+<receipt version="1" 
+	receipt-data='{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}' 
+	developer-appstore='com.sourcestore' 
+	developer-signature='dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI='/>
 ```
 
 Status
