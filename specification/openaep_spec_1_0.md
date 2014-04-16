@@ -135,58 +135,54 @@ https://www.sourceappstore.com/openaep/reviews?authToken=dee0ed6174a894113d5e8f6
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <reviews version="1" offset="https://www.sourceappstore.com/openaep/7j8ad9go.xml">
-    <review>
-      <package>ru.yandex.shell</package>
-      <appstoreId>com.sourceappstore</appstoreId>
-      <version>1.3.1</version>
-      <versionCode>81</versionCode>
-      <rating>0.6</rating>
-      <datetime>2013-02-22 23:30:30</datetime>
-      <device-model>SHW-M130K</device-model>
-      <device-name>Samsung GT-i9082</device-name>
-      <country>US</country>
-      <user-name>Bill White</user-name>
-      <title>Greate to learn language</title>
-      <text>Just perfect as it was since Win Mobile times</text>
-      <review-url>https://www.sourceappstore.com/reviews/108973876811345873453</review-url>
-    </review>
-	<review>
-	  <package>org.onepf.trivialdrive</package>
-      <appstoreId>com.sourceappstore</appstoreId>
-      <version>1.0</version>
-      <build>50</build>    
-      <rating>1.0</rating>
-      <datetime>2013-02-22 23:30:10</datetime>
-      <device-model>SHW-M130K</device-model>
-      <device-name>Samsung GT-i9082</device-name>
-      <country>US</country>
-    </review>
-    <review>
-	  <package>org.onepf.trivialdrive</package>
-      <appstoreId>com.sourceappstore</appstoreId>
-      <version>1.0</version>
-      <build>50</build>    
-      <rating>0.8</rating>
-      <datetime>2013-02-22 23:29:10</datetime>
-      <device-model>HTC One X</device-model>
-      <device-name>HTC One X</device-name>
-      <country>US</country>
-      <user-name>Dorian Gray</user-name>
-      <title>Great Game</title>
-      <text>Great game, but too short. 4 stars because of that.</text>
-      <review-url>https://www.sourceappstore.com/reviews/108973873741345873453</review-url>
-    </review>
-    <review>
-	  <package>com.softspb.flashcards.sv</package>
-      <appstoreId>com.sourceappstore</appstoreId>
-      <version>2.0.0.1</version>
-      <build>117</build>    
-      <rating>0.4</rating>
-      <datetime>2013-02-22 23:20:10</datetime>
-      <device-model>SHW-M130K</device-model>
-      <device-name>Samsung GT-i9082</device-name>
-      <country>US</country>
-    </review>
+    <review
+    	package="ru.yandex.shell"
+     	appstoreId="com.sourceappstore"
+      	version="1.3.1"
+      	versionCode="81"
+     	rating="0.6"
+      	datetime="2013-02-22 23:30:30"
+      	device-model="SHW-M130K"
+      	device-name="Samsung GT-i9082"
+      	country="US"
+      	user-name="Bill White"
+      	title="Greate to learn language"
+      	text="Just perfect as it was since Win Mobile times"
+      	review-url="https://www.sourceappstore.com/reviews/108973876811345873453"/>
+    <review
+    	package="org.onepf.trivialdrive"
+     	appstoreId="com.sourceappstore"
+      	version="1.0"
+      	versionCode="50"
+     	rating="1.0"
+      	datetime="2013-02-22 23:30:10"
+      	device-model="SHW-M130K"
+      	device-name="Samsung GT-i9082"
+      	country="DE"/>
+    <review
+    	package="org.onepf.trivialdrive"
+     	appstoreId="com.sourceappstore"
+      	version="1.0"
+      	versionCode="50"
+     	rating="0.8"
+      	datetime="2013-02-22 23:29:10"
+      	device-model="HTC One X"
+      	device-name="HTC One X"
+      	country="US"
+      	user-name="Dorian Gray"
+      	title="Great Game"
+      	text="Great game, but too short. 4 stars because of that."
+      	review-url="https://www.sourceappstore.com/reviews/108973873741345873453"/>
+    <review
+    	package="com.softspb.flashcards.sv"
+     	appstoreId="com.sourceappstore"
+      	version="2.0.0.1"
+      	versionCode="117"
+     	rating="0.4"
+      	datetime="2013-02-22 23:20:10"
+      	device-model="SHW-M130K"
+      	device-name="Samsung GT-i9082"
+      	country="UK"/>
 </reviews>
 ```
 
@@ -202,28 +198,26 @@ https://www.sourceappstore.com/openaep/downloads
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <downloads version="1" offset="https://www.distributorappstore.com/openaep/6i7zc8fn.xml">
-  <download>
-    <package>com.softspb.geo_game</package>
-    <appstoreId>com.sourceappstore</appstoreId>
-    <datetime>2013-02-22 23:30:30</datetime>
-    <version>1.0</version>
-    <versionCode>50</versionCode>
-    <device-model>SHW-M130K</device-model>
-    <device-name>Samsung GT-i9082</device-name>
-    <country>US</country>
-    <is-update>no</is-update>
-  </download>
-  <download>
-    <package>com.softspb.flashcards.sv</package>
-    <appstoreId>com.sourceappstore</appstoreId>
-    <datetime>2013-02-22 23:30:29</datetime>
-    <version>1.3.1</version>
-    <versionCode>81</versionCode>
-    <device-model>HTC One X</device-model>
-    <device-name>HTC One X</device-name>
-    <country>DE</country>
-    <is-update>yes</is-update>
-  </download>
+    <download
+    	package="com.softspb.geo_game"
+     	appstoreId="com.sourceappstore"
+      	version="1.0"
+      	versionCode="50"
+      	datetime="2013-02-22 23:30:30"
+      	device-model="SHW-M130K"
+      	device-name="Samsung GT-i9082"
+      	country="US"
+      	is-update="no"/>
+   	<download
+    	package="com.softspb.flashcards.sv"
+     	appstoreId="com.sourceappstore"
+      	version="1.3.1"
+      	versionCode="81"
+      	datetime="2013-02-22 23:20:10"
+      	device-model="HTC One X"
+      	device-name="HTC One X"
+      	country="DE"
+      	is-update="yes"/>      	
 </downloads>
 ```
 
@@ -239,38 +233,36 @@ https://www.sourceappstore.com/openaep/purchases
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <purchases version="1">
-  <purchase>
-    <id>90812378</id>
-    <package>com.softspb.geo_game</package>
-    <appstoreId>com.sourceappstore</appstoreId>
-    <datetime>2013-02-22 23:30:30</datetime>
-    <version>1.0</version>
-    <versionCode>50</versionCode>
-    <device-model>SHW-M130K</device-model>
-    <device-name>Samsung GT-i9082</device-name>
-    <country>US</country>
-    <user-price>0.99</user-price>
-    <user-currency>USD</user-currency>
-    <inner-price>0.99</inner-price>
-    <inner-currency>USD</inner-currency>
-    <signature>dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI=</signature>
-  </purchase>
-  <purchase>
-    <id>90812379</id>
-    <package>com.softspb.flashcards.sv</package>
-    <appstoreId>com.sourceappstore</appstoreId>
-    <datetime>2013-02-22 23:30:29 </datetime>
-    <version>1.3.1</version>
-    <versionCode>81</versionCode>
-    <device-model>HTC One X</device-model>
-    <device-name>HTC One X</device-name>
-    <country>DE</country>
-    <user-price>1.70</user-price>
-    <user-currency>EUR</user-currency>
-    <inner-price>2.50</inner-price>
-    <inner-currency>USD</inner-currency>
-    <signature>+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE=</signature>
-  </purchase>
+    <purchase
+    	id="90812378"
+    	package="com.softspb.geo_game"
+     	appstoreId="com.sourceappstore"
+      	version="1.0"
+      	versionCode="50"
+      	datetime="2013-02-22 23:30:30"
+      	device-model="SHW-M130K"
+      	device-name="Samsung GT-i9082"
+      	country="US"
+      	user-price="0.99"
+      	user-currency="USD"
+      	inner-price="0.99"
+      	inner-currency="USD"
+      	signature="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>
+   	<purchase
+   		id="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="
+    	package="com.softspb.flashcards.sv"
+     	appstoreId="com.sourceappstore"
+      	version="1.3.1"
+      	versionCode="81"
+      	datetime="2013-02-22 23:20:10"
+      	device-model="HTC One X"
+      	device-name="HTC One X"
+      	country="DE"
+      	user-price="1.70"
+      	user-currency="EUR"
+      	inner-price="2.50"
+      	inner-currency="USD"
+      	signature="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/> 
 </purchases>
 ```
 
@@ -296,9 +288,9 @@ requestBody:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <receipt version="1" 
-    receipt-data="{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" 
-    distributor-appstore="com.distributorstore" 
-    distributor-signature="+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE="/>
+	receipt-data='{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}' 
+	distributor-appstore='com.distributorstore' 
+	distributor-signature='+SzBm0wi8xECuGkKw97wnkSZ/62sxU+6Hq6a7qojIVE='/>
 ```
 
 #####Response
@@ -310,16 +302,16 @@ requestBody:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <receipt version="1" 
-    receipt-data="{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}" 
-    developer-appstore="com.sourcestore" 
-    developer-signature="dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI="/>
+	receipt-data='{"appstoreId":"com.destributorstore","orderId":"com.example.app","packageName":"com.example.app","productId":"exampleSku","purchaseTime":1345678900000,"purchaseToken":"122333444455555","developerPayload":"example developer payload"}' 
+	developer-appstore='com.sourcestore' 
+	developer-signature='dD80ihBh5jfNpymO5Hg1IdiJIEvHcJpCMiCMnN/RnbI='/>
 ```
 
 Status
 -------------
 Current status: draft
-Specification version: 0.82
-Last update: April 08, 2014  
+Specification version: 0.83
+Last update: April 15, 2014  
 
 License
 -------------
